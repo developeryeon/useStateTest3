@@ -1,15 +1,17 @@
 import React from 'react';
 
 // TODO: FilterButtons 컴포넌트를 작성하세요. 필터링 옵션을 선택하는 버튼들을 포함해야 합니다.
-function FilterButtons(/* 필요한 props를 여기에 전달하세요 */ { filteredStudents, setFilteredStudents, initialStudents }) {
+function FilterButtons(/* 필요한 props를 여기에 전달하세요 */ { setFilteredStudents, initialStudents }) {
 	const filterByAge = (minAge) => {
-		const ageFilterArr = filteredStudents.filter((student) => student.age >= minAge);
-		setFilteredStudents(ageFilterArr);
+		setFilteredStudents(function (prev) {
+			return prev.filter((student) => student.age >= minAge);
+		});
 	};
 
 	const filterByGrade = (grade) => {
-		const gradeFilterArr = filteredStudents.filter((student) => student.grade === grade);
-		setFilteredStudents(gradeFilterArr);
+		setFilteredStudents(function (prev) {
+			return prev.filter((student) => student.grade === grade);
+		});
 	};
 
 	const resetFilter = () => {
