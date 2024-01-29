@@ -12,15 +12,17 @@ function App() {
 
 	const [filteredStudents, setFilteredStudents] = useState(initialStudents);
 
-	const filterHandler = setFilteredStudents.filter((student) => student.name);
-
 	return (
 		<div>
 			<h1>학생 목록</h1>
 			{/* TODO: FilterButtons 컴포넌트를 작성하고 필요한 props를 전달하세요. */}
-			<FilterButtons filterHandler={filterHandler} />
+			<FilterButtons filteredStudents={filteredStudents} setFilteredStudents={setFilteredStudents} initialStudents={initialStudents}>
+				필터버튼
+			</FilterButtons>
 
 			{/* TODO: StudentList 컴포넌트를 작성하고 필요한 props를 전달하세요. */}
+			<StudentList filteredStudents={filteredStudents} setFilteredStudents={setFilteredStudents} />
+
 			{
 				/* <StudentList
 			/* 필요한 props를 여기에 전달하세요. */
